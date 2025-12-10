@@ -1,0 +1,59 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import { SITE } from "@config";
+---
+
+<Layout title={`Contact | ${SITE.title}`}>
+  <Header activeNav="contact" />
+  <main id="main-content" class="single-post">
+    <header class="single-post-header">
+      <div class="single-post-header-content">
+        <h1 class="single-post-title">Contact Us</h1>
+        <p class="single-post-excerpt">
+          Get in touch with us. We'd love to hear from you.
+        </p>
+      </div>
+    </header>
+    <section class="single-post-content">
+      <div class="contact-info">
+        <p>
+          Replace this content with your contact form or contact information.
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:info@example.com">info@example.com</a>
+        </p>
+        <p>
+          <strong>Phone:</strong>
+          <a href="tel:+10000000000">+1 000-000-0000</a>
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .contact-info {
+    max-width: var(--container-sm);
+    margin: 0 auto;
+  }
+
+  .contact-info p {
+    margin-bottom: var(--spacing-md);
+    font-family: var(--body-font);
+    font-size: var(--font-size-md);
+    color: var(--text-on-light);
+  }
+
+  .contact-info a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .contact-info a:hover {
+    color: var(--primary-light);
+  }
+</style>

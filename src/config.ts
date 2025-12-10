@@ -2,12 +2,12 @@ import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
   website: "https://example.com/", // replace with your deployed domain
-  author: "Your Name",
-  desc: "Your blog description",
-  title: "My Blog",
+  author: "Site Author",
+  desc: "A modern blog built with Astro and Pages CMS",
+  title: "Site Name",
   ogImage: "og-image.jpg",
-  lightAndDarkMode: true,
-  postPerPage: 3,
+  lightAndDarkMode: false, // Using dark mode only with glassmorphic design
+  postPerPage: 9,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
 
@@ -17,10 +17,10 @@ export const LOCALE = {
 } as const;
 
 export const LOGO_IMAGE = {
-  enable: false,
+  enable: true,
   svg: true,
-  width: 216,
-  height: 46,
+  width: 180,
+  height: 40,
 };
 
 export const SOCIALS: SocialObjects = [
@@ -31,21 +31,21 @@ export const SOCIALS: SocialObjects = [
     active: true,
   },
   {
-    name: "Mail",
-    href: "mailto:your@email.com",
-    linkTitle: `Send an email to ${SITE.title}`,
-    active: true,
-  },
-  {
     name: "Twitter",
     href: "https://twitter.com/",
     linkTitle: `${SITE.title} on Twitter`,
-    active: false,
+    active: true,
   },
   {
     name: "LinkedIn",
     href: "https://linkedin.com/",
     linkTitle: `${SITE.title} on LinkedIn`,
-    active: false,
+    active: true,
+  },
+  {
+    name: "Mail",
+    href: "mailto:info@example.com",
+    linkTitle: `Send an email to ${SITE.title}`,
+    active: true,
   },
 ];
