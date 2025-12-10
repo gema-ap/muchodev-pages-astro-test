@@ -2,9 +2,9 @@ import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
   website: "https://example.com/", // replace with your deployed domain
-  author: "Site Author",
-  desc: "A modern blog built with Astro and Pages CMS",
-  title: "Site Name",
+  author: "MuchoRed Dev Team",
+  desc: "Insights, tutorials, and updates from the MuchoRed development team",
+  title: "MuchoRed Development",
   ogImage: "og-image.jpg",
   lightAndDarkMode: false, // Using dark mode only with glassmorphic design
   postPerPage: 9,
@@ -26,19 +26,31 @@ export const LOGO_IMAGE = {
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "https://github.com/",
+    href: "https://github.com/muchored",
     linkTitle: `${SITE.title} on Github`,
+    active: false,
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com/muchored",
+    linkTitle: `${SITE.title} on Facebook`,
     active: true,
   },
   {
-    name: "Twitter",
-    href: "https://twitter.com/",
-    linkTitle: `${SITE.title} on Twitter`,
+    name: "Instagram",
+    href: "https://instagram.com/muchored",
+    linkTitle: `${SITE.title} on Instagram`,
+    active: true,
+  },
+  {
+    name: "TikTok",
+    href: "https://tiktok.com/@muchored",
+    linkTitle: `${SITE.title} on TikTok`,
     active: true,
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/",
+    href: "https://linkedin.com/company/muchored",
     linkTitle: `${SITE.title} on LinkedIn`,
     active: true,
   },
