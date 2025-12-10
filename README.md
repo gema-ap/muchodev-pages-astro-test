@@ -1,6 +1,6 @@
-# Astro Blog Starter
+# MuchoRed Astro Starter
 
-Minimal Astro blog template with Pages CMS integration.
+Starter template for MuchoRed's migration from WordPress to Astro + Pages CMS. Use this as a base for generating new client sites.
 
 ## Quick Start
 
@@ -23,7 +23,7 @@ Open [localhost:4321](http://localhost:4321) in your browser.
 
 ## Project Structure
 
-```
+```text
 src/
 ├── content/blog/    # Blog posts (markdown)
 ├── components/      # Astro/React components
@@ -59,5 +59,6 @@ tags:
 
 - [Astro](https://astro.build/)
 - [TailwindCSS](https://tailwindcss.com/)
-- [React](https://reactjs.org/) (for interactive components)
+- [Pages CMS](https://pagescms.org/) (content management)
+- [React](https://reactjs.org/) (interactive components)
 - [Fuse.js](https://fusejs.io/) (search)
