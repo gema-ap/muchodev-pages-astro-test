@@ -1,0 +1,88 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export interface Props {
+  currentPost: CollectionEntry<"blog">;
+}
+
+const { currentPost } = Astro.props;
+
+const { series, seriesOrder } = currentPost.data;
+
+// Only render if post belongs to a series
+if (!series || !seriesOrder) {
+  return;
+}
+
+// Get all posts in the same series
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+const seriesPosts = allPosts
+  .filter(post => post.data.series === series)
+  .sort((a, b) => (a.data.seriesOrder || 0) - (b.data.seriesOrder || 0));
+
+// Find previous and next in series
+const currentIndex = seriesPosts.findIndex(
+  post => post.slug === currentPost.slug
+);
+const prevInSeries = currentIndex > 0 ? seriesPosts[currentIndex - 1] : null;
+const nextInSeries =
+  currentIndex < seriesPosts.length - 1 ? seriesPosts[currentIndex + 1] : null;
+
+// Format series name for display (convert slug to title case)
+function formatSeriesName(seriesSlug: string): string {
+  return seriesSlug
+    .split("-")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+---
+
+{
+  series && seriesOrder && (
+    <nav class="series-nav">
+      <div class="series-nav-header">
+        <span class="series-nav-icon">📚</span>
+        <span class="series-nav-title">Series: {formatSeriesName(series)}</span>
+      </div>
+
+      <ol class="series-nav-list">
+        {seriesPosts.map((post, index) => (
+          <li
+            class={`series-nav-item ${post.slug === currentPost.slug ? "series-nav-item--current" : ""}`}
+          >
+            {post.slug === currentPost.slug ? (
+              <span class="series-nav-link series-nav-link--current">
+                {post.data.title}
+                <span class="series-nav-current-label">— you are here</span>
+              </span>
+            ) : (
+              <a href={`/posts/${post.slug}/`} class="series-nav-link">
+                {post.data.title}
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+
+      <div class="series-nav-buttons">
+        {prevInSeries && (
+          <a
+            href={`/posts/${prevInSeries.slug}/`}
+            class="series-nav-btn series-nav-btn--prev"
+          >
+            ← Previous
+          </a>
+        )}
+        {nextInSeries && (
+          <a
+            href={`/posts/${nextInSeries.slug}/`}
+            class="series-nav-btn series-nav-btn--next"
+          >
+            Next →
+          </a>
+        )}
+      </div>
+    </nav>
+  )
+}
